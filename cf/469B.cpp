@@ -39,7 +39,7 @@ int main()
 	while(t--)
 	{
 		int p,q,l,r;
-		sci(p);
+		sci(p); 
 		sci(q);
 		sci(l);
 		sci(r);
@@ -53,10 +53,11 @@ int main()
 			{
 				FL(k,0,q)
 				{
-					if(((c[k]+i>=a[j]&&c[k]+i<=b[j])||(d[k]+i>=a[j]&&d[k]+i<=b[j]))||((c[k]+i<=a[j]&&c[k]+i>=b[j])||(d[k]+i<=a[j]&&d[k]+i>=b[j])))
+					if(!(i+d[k]<a[j]||c[k]+i>b[j]))
 					{
 						cn++;
 						//printf("%d ",c);
+						//cout<<c[k]+i<<" "<<d[k]+i<<" "<<a[j]<<" "<<b[j]<<" "<<i<<endl;
 						j=k=100;
 					}
 				}
