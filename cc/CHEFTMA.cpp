@@ -42,19 +42,19 @@ int main()
 		sci(n);
 		sci(k);
 		sci(m);
-		int a[n],b[n],q[n],s=0;
+		int a[n],b,s=0;
 		FL(i,0,n) sci(a[i]);
-		FL(i,0,n){ sci(b[i]); q[i]=a[i]-b[i];s+=q[i];}
+		FL(i,0,n){ sci(b); a[i]=a[i]-b;s+=a[i];}
 		int c[k+m];
 		FL(i,0,k+m) sci(c[i]);
-		sort(q,q+n,greater<int>());
+		sort(a,a+n,greater<int>());
 		sort(c,c+k+m,greater<int>());
 		int i=0,j=0;
 		while(j<k+m && i<n)
 		{
-			if(c[j]<=q[i])
+			if(c[j]<=a[i])
 			{
-				q[i]-=c[j];
+				a[i]-=c[j];
 				s-=c[j];
 				i++;
 			}
