@@ -6,7 +6,7 @@ using namespace std;
 #define sci scanint
 #define scli scanlong
 #define FL(i,a,b) for(int i=a;i<b;++i)
-#define MOD 1e9+7
+#define MOD 1000000007
 #define lli long long int
 #define pb push_back
 #define nline printf("\n");
