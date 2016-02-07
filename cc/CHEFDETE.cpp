@@ -6,11 +6,10 @@ using namespace std;
 #define sci scanint
 #define scli scanlong
 #define FL(i,a,b) for(int i=a;i<b;++i)
-#define MOD 1000000007
+#define MOD 1e9+7
 #define lli long long int
 #define pb push_back
 #define nline printf("\n");
-#define mk make_pair
 
 void sci(int &x)
 {
@@ -35,11 +34,17 @@ void scli(lli &x)
 
 int main()
 {
-	int t=1;
-	//sci(t);
-	while(t--)
+	
+	int n;
+	sci(n);
+	int a[n+1]={0},b;
+	FL(i,1,n+1)
 	{
-
+		sci(b);
+		a[b]=1;
 	}
+	FL(i,1,n+1)
+		if(!a[i])
+			printf("%d ",i);
 	return 0;
 }

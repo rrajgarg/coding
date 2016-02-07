@@ -39,7 +39,12 @@ int main()
 	//sci(t);
 	while(t--)
 	{
-
+		int n,m;
+		sci(n);
+		sci(m);
+		string a;
+		cin>>a;
+		
 	}
 	return 0;
 }

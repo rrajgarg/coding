@@ -10,7 +10,6 @@ using namespace std;
 #define lli long long int
 #define pb push_back
 #define nline printf("\n");
-#define mk make_pair
 
 void sci(int &x)
 {
@@ -32,14 +31,34 @@ void scli(lli &x)
     for(;c>47 && c<58;c = gc()) {x = (x<<1) + (x<<3) + c - 48;}
     if(neg) x=-x;
 }
+lli dp[100000+5];
+lli a[100000+5]={0};
+lli func(int i)
+{
+	if(dp[i]!=-1) return dp[i];
+	//dp[i]=a[i]*i;
+	//lli j=func(i+2);
 
+	return dp[i]=max(a[i]*i+func(i+2),func(i+1));
+}
 int main()
 {
 	int t=1;
 	//sci(t);
 	while(t--)
 	{
-
+		memset(dp,-1,sizeof(dp));
+		lli sum=0;
+		int n;
+		sci(n);
+		
+		int b;
+		FL(i,0,n)
+		{
+			sci(b);
+			a[b]++;
+		}
+		cout<<func(0);
 	}
 	return 0;
 }

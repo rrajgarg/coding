@@ -10,7 +10,6 @@ using namespace std;
 #define lli long long int
 #define pb push_back
 #define nline printf("\n");
-#define mk make_pair
 
 void sci(int &x)
 {
@@ -35,10 +34,31 @@ void scli(lli &x)
 
 int main()
 {
-	int t=1;
-	//sci(t);
+	
+	int t;
+	sci(t);
 	while(t--)
 	{
+		lli n,x,m;
+		scli(n);
+		scli(x);
+		scli(m);
+		lli a[n+1];
+		FL(i,1,n+1) scli(a[i]);
+		if(x==1)
+			printf("%lld\n",a[1]%MOD);
+		else if(x==2)
+			printf( "%lld\n",(  ( ((a[1]%MOD)*(m%MOD) )%MOD)+(a[2]%MOD))%MOD    );
+		else
+		{
+			lli ans=0;
+			FL(i,1,x)
+			{
+				ans=((ans%MOD)+( ((a[i]%MOD)*(m%MOD) )%MOD))%MOD;
+			}
+			ans=((ans%MOD)+(a[x]%MOD))%MOD;
+			printf("%lld\n",ans);
+		}
 
 	}
 	return 0;

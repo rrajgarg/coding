@@ -39,7 +39,36 @@ int main()
 	//sci(t);
 	while(t--)
 	{
+		int n,m,k;
+		sci(n);
+		sci(m);
+		sci(k);
+		int nm=n*m;
+		int ans=nm;
+		int x=1,y=1;
+		int dir=1;
+		FL(i,0,k-1)
+		{
+			printf("%d ",nm/k);
+			ans=ans-nm/k;
+			FL(j,0,nm/k)
+			{
+				if(x>m) y++,x=m,dir=dir^1;
+				if(x<=0) y++,x=1,dir=dir^1;
+				printf("%d %d ",y,dir?x++:x--);
+			}
 
+
+			nline;
+		}
+		printf("%d ",ans);
+			//ans=ans-nm/k;
+			FL(j,0,ans)
+			{
+				if(x>m) y++,x=m,dir=dir^1;
+				if(x<=0) y++,x=1,dir=dir^1;
+				printf("%d %d ",y,dir?x++:x--);
+			}
 	}
 	return 0;
 }
