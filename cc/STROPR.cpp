@@ -42,7 +42,7 @@ lli power(lli x, unsigned lli y, unsigned lli m)
  
     return (y%2 == 0)? p : (x * p) % m;
 }
-lli dp[1000000+100];
+lli dp[100000+100];
 lli modInverse(lli a, lli m)
 {
 	if(dp[a]!=0) return dp[a];
