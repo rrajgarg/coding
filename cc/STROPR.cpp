@@ -42,9 +42,12 @@ lli power(lli x, unsigned lli y, unsigned lli m)
  
     return (y%2 == 0)? p : (x * p) % m;
 }
+lli dp[1000000+100];
 lli modInverse(lli a, lli m)
 {
-    return power(a, m-2, m);
+	if(dp[a]!=0) return dp[a];
+	
+	return dp[a]=power(a, m-2, m);
   
 }
 // Driver Program
