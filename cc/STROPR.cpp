@@ -1,7 +1,7 @@
 #include<bits/stdc++.h>
-
+ 
 using namespace std;
-
+ 
 #define gc getchar
 #define sci scanint
 #define scli scanlong
@@ -10,7 +10,7 @@ using namespace std;
 #define lli long long int
 #define pb push_back
 #define nline printf("\n");
-
+ 
 void sci(int &x)
 {
     register int c = gc();
@@ -31,7 +31,23 @@ void scli(lli &x)
     for(;c>47 && c<58;c = gc()) {x = (x<<1) + (x<<3) + c - 48;}
     if(neg) x=-x;
 }
-
+ 
+ 
+lli power(lli x, unsigned lli y, unsigned lli m)
+{
+    if (y == 0)
+        return 1;
+    lli p = power(x, y/2, m) % m;
+    p = (p * p) % m;
+ 
+    return (y%2 == 0)? p : (x * p) % m;
+}
+lli modInverse(lli a, lli m)
+{
+    return power(a, m-2, m);
+  
+}
+// Driver Program
 int main()
 {
 	
@@ -44,22 +60,29 @@ int main()
 		scli(x);
 		scli(m);
 		lli a[n+1];
-		FL(i,1,n+1) scli(a[i]);
+		for(lli i=1;i<n+1;++i)
+			scli(a[i]);
 		if(x==1)
 			printf("%lld\n",a[1]%MOD);
 		else if(x==2)
 			printf( "%lld\n",(  ( ((a[1]%MOD)*(m%MOD) )%MOD)+(a[2]%MOD))%MOD    );
 		else
 		{
-			lli ans=0;
-			FL(i,1,x)
+			lli ans=a[x]%MOD;
+			lli num=1;
+			int p=x-1;
+			m%=MOD;
+			for(lli i=1;i<x;++i)
 			{
-				ans=((ans%MOD)+( ((a[i]%MOD)*(m%MOD) )%MOD))%MOD;
+				num=( ((num%MOD)* ((m)%MOD)%MOD)* (modInverse(i,1000000007)%MOD)  )%MOD;
+				ans=((ans%MOD)+((num%MOD )*(a[p--]%MOD))%MOD)%MOD;
+				m++;
+			//	cout<<num<<endl;
 			}
-			ans=((ans%MOD)+(a[x]%MOD))%MOD;
+			
 			printf("%lld\n",ans);
 		}
-
+ 
 	}
 	return 0;
-}
+}  
