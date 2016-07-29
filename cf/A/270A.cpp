@@ -36,17 +36,14 @@ void scli(lli &x)
 int main()
 {
 	int t=1;
-	//sci(t);
+	sci(t);
 	while(t--)
 	{
-		int n,k;
+		int n;
 		sci(n);
-		sci(k);
-		int a=n;
-		for(int i=n;i>=n-k+1;i--)
-			printf("%d ",i);
-		for(int i=1;i<=n-k;i++)
-			printf("%d " ,i);
+		if(ceil(360.0/(180-n))==floor(360.0/(180-n)))
+			printf("YES\n");
+		else printf("NO\n");
 	}
 	return 0;
 }
