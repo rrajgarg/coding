@@ -32,8 +32,14 @@ void scli(lli &x)
     for(;c>47 && c<58;c = gc()) {x = (x<<1) + (x<<3) + c - 48;}
     if(neg) x=-x;
 }
-
-
+int dp[2002]={0};
+int a[2001+1]={0};
+int func(int n)
+{
+	if(dp[n]!=-1) return dp[n];
+	if(a[n]==-1) return 1;
+	return dp[n]=1+func(a[n]);
+}
 int main()
 {
 	int t=1;
@@ -43,17 +49,15 @@ int main()
 		
 		int n;
 		sci(n);
-		lli a[n+1];
-
-		FL(i,0,n) scli(a[i]); 
-		sort(a,a+n);
-		lli c=0,k=1;
-		FL(i,0,n)
-		{
-			c+=abs(a[i]-k++);
-		}
-		cout<<c;
-
+		FL(i,0,2001) dp[i]=-1;
+		
+		FL(i,1,n+1)
+			sci(a[i]);
+		int max=1;
+		FL(i,1,n+1) func(i);
+		FL(i,1,n+1) 
+			if(max<dp[i]) max=dp[i];
+		cout<<max;
 
 	}
 	return 0;
